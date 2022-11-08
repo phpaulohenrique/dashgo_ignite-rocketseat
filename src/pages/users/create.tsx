@@ -25,8 +25,10 @@ import { queryClient } from "../../services/queryClient";
 
 
 type CreateUserFormData = {
+    name: string;
     email: string;
     password: string;
+    password_confirmation: string;
 };
 
 const CreateUserFormSchema = yup.object().shape({
@@ -57,7 +59,7 @@ export default function CreateUser() {
     }
     )
 
-    const { register, handleSubmit, formState } = useForm({
+    const { register, handleSubmit, formState } = useForm<CreateUserFormData>({
         resolver: yupResolver(CreateUserFormSchema),
     });
 
@@ -122,6 +124,7 @@ export default function CreateUser() {
                                 name="password"
                                 type="password"
                                 label="Senha"
+                                isRequired
                                 error={errors.password}
                                 {...register("password")}
                             />
