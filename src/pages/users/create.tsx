@@ -103,13 +103,16 @@ export default function CreateUser() {
                         >
                             <Input
                                 name="name"
+                                type="text"
                                 label="Nome completo"
                                 error={errors.name}
+                                
                                 {...register("name")}
                             />
                             <Input
-                                name="email  "
+                                name="email"
                                 label="E-mail"
+                                type="email"
                                 error={errors.email}
                                 {...register("email")}
                             />
